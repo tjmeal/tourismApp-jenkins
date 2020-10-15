@@ -14,17 +14,17 @@ docker {
     files "plugins.txt", "seedJob.xml"
 }
 
-//Process process
-//if (DefaultNativePlatform.getCurrentOperatingSystem().isWindows()) {
-//    process = "docker run --rm -v /var/run/docker.sock:/var/run/docker.sock alpine stat -c %g /var/run/docker.sock".execute()
-//} else {
-//    process = "stat -c %g /var/run/docker.sock".execute()
-//}
-//
-//
-//def out = new ByteArrayOutputStream()
-//process.waitForProcessOutput(out, System.err)
-//String dockerSockGroupId = out.toString().trim() == "" ? "root" : out.toString().trim()
+Process process
+if (DefaultNativePlatform.getCurrentOperatingSystem().isWindows()) {
+    process = "docker run --rm -v /var/run/docker.sock:/var/run/docker.sock alpine stat -c %g /var/run/docker.sock".execute()
+} else {
+    process = "stat -c %g /var/run/docker.sock".execute()
+}
+
+
+def out = new ByteArrayOutputStream()
+process.waitForProcessOutput(out, System.err)
+String dockerSockGroupId = out.toString().trim() == "" ? "root" : out.toString().trim()
 
 dockerRun {
     name "${project.name}"
@@ -32,5 +32,5 @@ dockerRun {
     ports '8080:8080'
     clean true
     daemonize false
-//    arguments '-v', '//var/run/docker.sock:/var/run/docker.sock', '--group-add', dockerSockGroupId
+    arguments '-v', '//var/run/docker.sock:/var/run/docker.sock', '--group-add', dockerSockGroupId
 }
