@@ -22,18 +22,18 @@ pipelineJob('theme-park-job') {
     }
 }
 
-pipelineJob('theme-park-job-docker') {
-    definition {
-        cpsScm {
-            scm {
-                git {
-                    remote {
-                        url 'https://github.com/tkgregory/jenkins-demo.git'
-                    }
-                    branch 'master'
-                    scriptPath 'Jenkinsfile-docker'
-                }
-            }
-        }
-    }
-}
+//pipelineJob('theme-park-job-docker') {
+//    definition {
+//        cpsScm {
+//            scm {
+//                git {
+//                    remote {
+//                        url 'https://github.com/tkgregory/jenkins-demo.git'
+//                    }
+//                    branch 'master'
+//                    scriptPath 'Jenkinsfile-docker'
+//                }
+//            }
+//        }
+//    }
+//}
