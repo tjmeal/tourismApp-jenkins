@@ -7,20 +7,20 @@
 //    }
 //}
 
-//pipelineJob('theme-park-job') {
-//    definition {
-//        cpsScm {
-//            scm {
-//                git {
-//                    remote {
-//                        url 'https://github.com/tkgregory/jenkins-demo.git'
-//                    }
-//                    branch 'master'
-//                }
-//            }
-//        }
-//    }
-//}
+pipelineJob('theme-park-job') {
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url 'https://github.com/tkgregory/jenkins-demo.git'
+                    }
+                    branch 'master'
+                }
+            }
+        }
+    }
+}
 
 pipelineJob('theme-park-job-docker') {
     definition {
